@@ -5,14 +5,8 @@ module.exports = {
         path: '/',
         name: 'landing',
         beforeScreenshot: async (page) => {
-          // Wait for the input field to appear
-          await page.waitForSelector('input[type="text"]');
-          
-          // Focus on the input and type "Apple"
-          await page.click('input[type="text"]'); // Focus the input
-          await page.evaluate(() => (document.querySelector('input[type="text"]').value = '')); // Clear input field
-          await page.type('input[type="text"]', 'Apple'); // Type "Apple" into the search box
-        },
+          await page.click('button'); // Clicks the "Set Search to 'Apple'" button
+        }
       },
     ],
     baseUrl: 'http://172.17.0.1:3000',

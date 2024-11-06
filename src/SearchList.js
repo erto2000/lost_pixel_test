@@ -14,8 +14,10 @@ const SearchList = () => {
       <input
         type="text"
         placeholder="Search..."
+        value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
+      <button onClick={() => setSearchTerm('Apple')}>Set Search to "Apple"</button>
       <ul>
         {filteredItems.map((item, index) => (
           <li key={index}>{item}</li>
