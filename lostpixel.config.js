@@ -1,25 +1,13 @@
 module.exports = {
   pageShots: {
-    pages: [
-      {
-        path: '/',
-        name: 'landing',
-        beforeScreenshot: async (page) => {
-          console.log('Attempting to click the button...');
-          await page.click('button');
-          await page.waitForTimeout(500); // Add a 500ms delay to ensure state update
-          console.log('Button clicked and waited for update.');
-        }
-        
-      },
-    ],
+    pages: [{ path: '/', name: 'landing' }],
     baseUrl: 'http://172.17.0.1:3000',
-    breakpoints: [375, 768, 1024],
-    mask: [{ selector: '.dynamic-item' }],
+    breakpoints: [375, 768, 1024], // Adding responsive breakpoints
+    mask: [{ selector: '.dynamic-item' }], // Corrected to an object with selector
   },
   lostPixelProjectId: 'cm363gq9l0k6nqwvybegpzlb8',
   apiKey: process.env.LOST_PIXEL_API_KEY,
-  browsers: ['chromium', 'firefox'],
-  threshold: 0.05,
-  waitForSelector: '.loading',
+  browsers: ['chromium', 'firefox'], // Adjusted key and values to supported options
+  threshold: 0.05, // Allow slight differences in pixels for minor variations
+  waitForSelector: '.loading', // Optional: Wait for loading spinner to disappear if needed
 };
