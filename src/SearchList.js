@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 const SearchList = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const items = ['Appllllle', 'Banana', 'Cherry', 'Date', 'Elderberry'];
+  const items = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'];
 
   const filteredItems = items.filter(item => 
     item.toLowerCase().includes(searchTerm.toLowerCase())
