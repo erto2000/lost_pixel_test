@@ -1,13 +1,22 @@
 module.exports = {
   pageShots: {
-    pages: [{ path: '/', name: 'landing' }],
+    pages: [
+      {
+        path: '/',
+        name: 'landing',
+        beforeScreenshot: async (page) => {
+          // Find the search box element and type text into it
+          await page.type('input[type="text"]', 'Apple');
+        },
+      },
+    ],
     baseUrl: 'http://172.17.0.1:3000',
-    breakpoints: [375, 768, 1024], // Adding responsive breakpoints
-    mask: [{ selector: '.dynamic-item' }], // Corrected to an object with selector
+    breakpoints: [375, 768, 1024],
+    mask: [{ selector: '.dynamic-item' }],
   },
   lostPixelProjectId: 'cm363gq9l0k6nqwvybegpzlb8',
   apiKey: process.env.LOST_PIXEL_API_KEY,
-  browsers: ['chromium', 'firefox'], // Adjusted key and values to supported options
-  threshold: 0.05, // Allow slight differences in pixels for minor variations
-  waitForSelector: '.loading', // Optional: Wait for loading spinner to disappear if needed
+  browsers: ['chromium', 'firefox'],
+  threshold: 0.05,
+  waitForSelector: '.loading',
 };
