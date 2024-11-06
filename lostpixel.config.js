@@ -5,8 +5,12 @@ module.exports = {
         path: '/',
         name: 'landing',
         beforeScreenshot: async (page) => {
-          await page.click('button'); // Clicks the "Set Search to 'Apple'" button
+          console.log('Attempting to click the button...');
+          await page.click('button');
+          await page.waitForTimeout(500); // Add a 500ms delay to ensure state update
+          console.log('Button clicked and waited for update.');
         }
+        
       },
     ],
     baseUrl: 'http://172.17.0.1:3000',
