@@ -5,19 +5,20 @@ module.exports = {
         path: '/',
         name: 'landing',
         beforeScreenshot: async (page) => {
+          // Log any console errors to help diagnose
+          page.on('console', msg => console.log('PAGE LOG:', msg.text()));
+
           // Wait for the input field to appear
           await page.waitForSelector('input[type="text"]');
           
-          // Focus on the input and add a short delay
-          await page.focus('input[type="text"]');
+          // Directly set the value and dispatch an input event to simulate typing
           await page.evaluate(() => {
             const input = document.querySelector('input[type="text"]');
-            input.value = ''; // Clear any existing text
+            if (input) {
+              input.value = 'Apple';
+              input.dispatchEvent(new Event('input', { bubbles: true }));
+            }
           });
-          
-          // Add a short delay before typing
-          await page.waitForTimeout(100);
-          await page.type('input[type="text"]', 'Apple'); // Type "Apple" into the search box
         },
       },
     ],
