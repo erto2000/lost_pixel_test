@@ -5,8 +5,13 @@ module.exports = {
         path: '/',
         name: 'landing',
         beforeScreenshot: async (page) => {
-          // Find the search box element and type text into it
-          await page.type('input[type="text"]', 'Apple');
+          // Wait for the input field to appear
+          await page.waitForSelector('input[type="text"]');
+          
+          // Focus on the input and type "Apple"
+          await page.click('input[type="text"]'); // Focus the input
+          await page.evaluate(() => (document.querySelector('input[type="text"]').value = '')); // Clear input field
+          await page.type('input[type="text"]', 'Apple'); // Type "Apple" into the search box
         },
       },
     ],
