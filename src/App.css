@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+/* src/App.css */
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
