@@ -8,9 +8,15 @@ module.exports = {
           // Wait for the input field to appear
           await page.waitForSelector('input[type="text"]');
           
-          // Focus on the input and type "Apple"
-          await page.click('input[type="text"]'); // Focus the input
-          await page.evaluate(() => (document.querySelector('input[type="text"]').value = '')); // Clear input field
+          // Focus on the input and add a short delay
+          await page.focus('input[type="text"]');
+          await page.evaluate(() => {
+            const input = document.querySelector('input[type="text"]');
+            input.value = ''; // Clear any existing text
+          });
+          
+          // Add a short delay before typing
+          await page.waitForTimeout(100);
           await page.type('input[type="text"]', 'Apple'); // Type "Apple" into the search box
         },
       },
