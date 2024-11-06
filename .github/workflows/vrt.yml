@@ -16,19 +16,12 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-    
+
       - name: Build app
         run: npm run build
 
       - name: Start server (in background)
         run: npm run start &
-
-      # Cache step (optional) with a unique key for each run
-      - name: Cache Lost Pixel screenshots
-        uses: actions/cache@v3
-        with:
-          path: .lost-pixel-cache
-          key: lost-pixel-${{ github.run_id }} # Unique key per run to prevent reuse
 
       - name: Lost Pixel
         uses: lost-pixel/lost-pixel@v3.16.0
